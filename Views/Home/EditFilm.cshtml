@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Movie
+
+<!--form here that receives the movie object, puts those presets into text inputs, and then submits to the http post of EditFilm-->
+
+<form asp-action="EnterFilm" method="post">
+    <div class="form-group">
+        <!--set the key to an exact value so it updates instead of adding-->
+        <input asp-for="MovieId" type="hidden" value="@Model.MovieId" />
+
+        <label asp-for="Category"></label>
+        <input class="form-control" type="text" asp-for="Category" />
+        <br />
+
+        <label asp-for="Title"></label>
+        <input class="form-control" type="text" asp-for="Title" />
+        <br />
+
+        <label asp-for="Year"></label>
+        <input class="form-control" type="text" asp-for="Year" />
+        <br />
+
+        <label asp-for="Director"></label>
+        <input class="form-control" type="text" asp-for="Director" />
+        <br />
+
+        <label asp-for="Rating"></label>
+        <select class="form-control" asp-for="Rating">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <br />
+
+
+        <p>Edited:</p>
+        <label for="Edit">Yes</label>
+        <input type="radio" id="Edit" asp-for="Edited" name="edited" value="Yes" />
+        <label for="NoEdit">No</label>
+        <input type="radio" id="NoEdit" asp-for="Edited" name="edited" value="No" />
+        <br /><br />
+
+
+
+        <label asp-for="LentTo"></label>
+        <input class="form-control" type="text" asp-for="LentTo" />
+        <br />
+
+        <label asp-for="Notes"></label>
+        <input class="form-control" type="text" asp-for="Notes" />
+        <br />
+
+    </div>
+    <button class="btn btn-light" asp-action="EditFilm">Save</button>
+    <div asp-validation-summary="All"></div>
+</form>
